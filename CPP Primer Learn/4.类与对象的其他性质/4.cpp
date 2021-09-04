@@ -17,7 +17,7 @@ class Student
 
     public:
         char name[5];
-        int StudentID;
+        int studentID;
         int score;
         static int max;
         static int min;
@@ -38,7 +38,7 @@ Student::Student()
 void Student::Print()
 {
     cout << "My name is:  " << name << endl;
-    cout << "My StudentID is: " << StudentID << endl;
+    cout << "My studentID is: " << studentID << endl;
     cout << "My score is: " << score << endl;
     cout << "------------------------------------" << endl;
 
@@ -79,7 +79,7 @@ int main()
     Student a1, a2;
     strcpy(a1.name, "XB");
     a1.score = 80;
-    a1.StudentID = 20211031;
+    a1.studentID = 20211031;
     a1.Add();
     a1.MaxScore();
     a1.MinScore();
@@ -87,7 +87,7 @@ int main()
 
     strcpy(a2.name, "ZZ");
     a2.score = 90;
-    a2.StudentID = 20201031;
+    a2.studentID = 20201031;
     a2.Add();
     a2.MaxScore();
     a2.MinScore();
