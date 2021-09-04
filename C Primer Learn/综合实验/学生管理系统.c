@@ -48,6 +48,7 @@ void menu(int p)//²Ëµ¥¹¦ÄÜ
 		case 2:stu_infor_put(stu1,n,&c,&q,&qz);break;
 		case 3:stu_search(stu1,n,&c,&q,&qz);break;
 		case 4:stu_change_put(stu1,n,&c,&q,&qz);break;
+		
 		case 5:stu_aver(stu1,n,&c,&q,&qz);break;
 		case 6:stu_delete(stu1,n,&c,&q,&qz);break;
 		case 7:stu_add(stu1,n,&c,&q,&qz);break;
