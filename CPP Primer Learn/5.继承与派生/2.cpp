@@ -1,5 +1,6 @@
 /*
-    
+    设计一个基类，从基类派生圆，从圆派生圆柱，设计成员函数输出
+    他们的面积和体积。
 */
 
 #include<iostream>
@@ -23,22 +24,22 @@ class Circular:public Basic
     protected:
         double area;
     public:
-    /*  void Circular(double a)
+        Circular(double a)
         {
             r = a;
-            area = 3.14 * r * r;
-        }*/
-         Circular(double a);
+            area = 3.14 * r * r;            
+        }
         double getArea()
         {
             return area;
         }
 };
- Circular::Circular(double a)
+/* Circular::Circular(double a)
 {
-    r = a;
-            area = 3.14 * r * r;
-}
+        r = a;
+        area = 3.14 * r * r;
+}*/
+
 class Column:public Circular
 {
     protected:
@@ -58,9 +59,9 @@ class Column:public Circular
 };
 int main()
 {
-    Circular circular(45.0);
+    Circular circular(45);
     Column Column(12, 10);
-    cout << "Բ�������   " << circular.getArea() << endl;
-    cout << "Բ�������:     " << Column.getCubage() << endl;
+    cout << "The circular area is:  " << circular.getArea() << endl;
+    cout << "The column cubage is:   " << Column.getCubage() << endl;
     return 0;
 }
