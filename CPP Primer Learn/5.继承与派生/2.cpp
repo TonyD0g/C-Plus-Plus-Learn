@@ -34,12 +34,6 @@ class Circular:public Basic
             return area;
         }
 };
-/* Circular::Circular(double a)
-{
-        r = a;
-        area = 3.14 * r * r;
-}*/
-
 class Column:public Circular
 {
     protected:
