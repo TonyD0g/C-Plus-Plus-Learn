@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Vendor\Command; use Illuminate\Console\Command; use ModStart\Core\Dao\ModelUtil; abstract class BaseDumpDemoDataCommand extends Command { protected $signature = 'dump-demo-data'; protected function buildInsert() { goto L4oU_; YyQ1P: return $I3kpN; goto A5pS2; L4oU_: $I3kpN = array(); goto UuJK5; UuJK5: $uu239 = func_get_args(); goto lf2hw; lf2hw: foreach ($uu239 as $qNtCk) { if (is_array($qNtCk)) { goto SsMDO; xkxvg: if ($HrHtQ) { $I3kpN[$qNtCk[0]] = array_filter($I3kpN[$qNtCk[0]], $HrHtQ); } goto r98eN; SsMDO: $I3kpN[$qNtCk[0]] = ModelUtil::all($qNtCk[0], array(), $qNtCk[1]); goto EDxmo; EDxmo: $HrHtQ = isset($qNtCk[2]) ? $qNtCk[2] : null; goto xkxvg; r98eN: } else { $I3kpN[$qNtCk] = ModelUtil::all($qNtCk); } } goto YyQ1P; A5pS2: } protected function buildUpdate() { goto mdVw1; z6Vm2: $dS1Ta = array(); goto M86QD; ONxyf: return $dS1Ta; goto VP2YX; M86QD: foreach ($W7r8i as $Kz1MT) { $dS1Ta[] = array('table' => $Kz1MT[0], 'where' => $Kz1MT[1], 'update' => ModelUtil::get($Kz1MT[0], $Kz1MT[1], $Kz1MT[2])); } goto ONxyf; mdVw1: $W7r8i = func_get_args(); goto z6Vm2; VP2YX: } protected function buildDump($hRWBB) { goto sVwas; f6LIj: file_put_contents($JJGcw = public_path('data_demo/data.php'), '<' . '?php return ' . var_export($hRWBB, true) . ';'); goto yJ6Fw; sVwas: @mkdir(public_path('data_demo')); goto f6LIj; yJ6Fw: $this->info("dump success -> {$JJGcw}"); goto VXwYm; VXwYm: } public abstract function handle(); }

@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Member\Field; use ModStart\Core\Assets\AssetsUtil; use ModStart\Core\Util\ArrayUtil; use ModStart\Field\AutoRenderedFieldValue; use ModStart\Field\Type\FieldRenderMode; use Module\Member\Util\MemberUtil; class AutoRenderedMemberUsersField { public static function make($E1hOF, $HAqS9) { switch ($E1hOF) { case FieldRenderMode::GRID: case FieldRenderMode::DETAIL: $wcHDX = array_map(function ($KdsT8) { return '<span class="ub-tag sm">' . htmlspecialchars($KdsT8) . '</span>'; }, MemberUtil::listViewName($HAqS9['memberUserIds'])); return AutoRenderedFieldValue::make(join(' ', $wcHDX)); case FieldRenderMode::FORM: goto Qfqsu; uC459: $iyeqU = ArrayUtil::flatItemsByKey($RIkMY, 'id'); goto Lqdj3; XgSnS: return AutoRenderedFieldValue::makeView('module::Member.View.field.memberUsers', array('memberUserIds' => $iyeqU, 'memberUsers' => $RIkMY, 'param' => $HAqS9)); goto NbZI6; Lqdj3: $RIkMY = array_map(function ($KdsT8) { return array('value' => intval($KdsT8['id']), 'name' => MemberUtil::viewName($KdsT8), 'avatar' => AssetsUtil::fixOrDefault($KdsT8['avatar'], 'asset/image/avatar.png')); }, $RIkMY); goto XgSnS; Qfqsu: $RIkMY = MemberUtil::listUsers($HAqS9['memberUserIds']); goto uC459; NbZI6: } } }

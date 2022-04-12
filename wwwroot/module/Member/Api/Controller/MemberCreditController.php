@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Member\Api\Controller; use ModStart\Core\Input\InputPackage; use ModStart\Core\Input\Response; use ModStart\Module\ModuleBaseController; use Module\Member\Auth\MemberUser; use Module\Member\Support\MemberLoginCheck; use Module\Member\Util\MemberCreditUtil; class MemberCreditController extends ModuleBaseController implements MemberLoginCheck { public function get() { return Response::generateSuccessData(array('total' => MemberCreditUtil::getTotal(MemberUser::id()))); } public function log() { goto RhTRu; nNPyG: $nKLrL = $V_bni->getTrimString('type'); goto Z_Gep; k5nw4: return Response::generateSuccessPaginate($HoLMG->getPage(), $HoLMG->getPageSize(), $wN_YM); goto AlPtx; tztf9: $wN_YM = MemberCreditUtil::paginateLog(MemberUser::id(), $HoLMG->getPage(), $HoLMG->getPageSize(), $HxhmW); goto k5nw4; RhTRu: $HoLMG = InputPackage::buildFromInput(); goto m3Ah9; m3Ah9: $HxhmW = array(); goto lBTVH; Z_Gep: switch ($nKLrL) { case 'income': $HxhmW['whereOperate'] = array('change', '>', '0'); break; case 'payout': $HxhmW['whereOperate'] = array('change', '<', '0'); break; } goto tztf9; lBTVH: $V_bni = $HoLMG->getJsonAsInput('search'); goto nNPyG; AlPtx: } }

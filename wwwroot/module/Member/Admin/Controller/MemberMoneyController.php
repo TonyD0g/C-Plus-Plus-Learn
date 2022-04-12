@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Member\Admin\Controller; use Illuminate\Routing\Controller; use ModStart\Admin\Auth\AdminPermission; use ModStart\Admin\Layout\AdminDialogPage; use ModStart\Core\Dao\ModelUtil; use ModStart\Core\Input\InputPackage; use ModStart\Core\Input\Response; use ModStart\Core\Util\CRUDUtil; use ModStart\Form\Form; use Module\Member\Util\MemberMoneyUtil; class MemberMoneyController extends Controller { public static $PermitMethodMap = array('*' => '\\Module\\Member\\Admin\\Controller\\MemberController@index'); public function charge(AdminDialogPage $ZcuyS) { goto NQcHS; NQcHS: $H7GUl = InputPackage::buildFromInput()->getInteger('memberUserId'); goto LIfO4; tB7gf: $mUGak->showSubmit(false)->showReset(false); goto hr0qR; LIfO4: $mUGak = Form::make(''); goto ARX5t; Zfouz: $mUGak->text('remark', '说明')->defaultValue('系统变更')->required(); goto tB7gf; ARX5t: $mUGak->display('_total', '余额')->value(MemberMoneyUtil::getTotal($H7GUl))->addable(true); goto SfRh6; hr0qR: return $ZcuyS->pageTitle('积分充值')->body($mUGak)->handleForm($mUGak, function (Form $mUGak) use($H7GUl) { AdminPermission::demoCheck(); $hRWBB = $mUGak->dataForming(); ModelUtil::transactionBegin(); MemberMoneyUtil::change($H7GUl, $hRWBB['change'], $hRWBB['remark']); ModelUtil::transactionCommit(); return Response::redirect(CRUDUtil::jsDialogCloseAndParentRefresh()); }); goto kzmJf; SfRh6: $mUGak->decimal('change', '金额')->help('负数表示减少')->required(); goto Zfouz; kzmJf: } }

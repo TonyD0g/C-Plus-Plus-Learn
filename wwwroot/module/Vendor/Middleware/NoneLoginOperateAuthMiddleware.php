@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Vendor\Middleware; use ModStart\Core\Exception\BizException; use ModStart\Core\Input\InputPackage; use ModStart\Core\Input\Request; use ModStart\Core\Util\TimeUtil; use Module\Vendor\Util\NoneLoginOperateUtil; class NoneLoginOperateAuthMiddleware { public function handle($FPoEp, \Closure $m3B93) { goto Lh5ev; u65Fd: BizException::throwsIfEmpty('nonce为空', $NN5ns); goto KScrO; KScrO: BizException::throwsIfEmpty('sign为空', $uCmst); goto Q9Rha; cD1A1: return $m3B93($FPoEp); goto STBD3; LeGGG: $uCmst = $HoLMG->getTrimString('sign'); goto u65Fd; xdiXY: $HoLMG = InputPackage::buildFromInput(); goto k3JZU; T_QcC: BizException::throwsIf('sign错误', $uCmst != $ax1CP); goto cD1A1; Q9Rha: $ax1CP = NoneLoginOperateUtil::sign(Request::path(), $NN5ns, $dVL9O, $HoLMG->getTrimString('param')); goto T_QcC; FRqgC: BizException::throwsIfEmpty('APP_KEY为空', $MC61s); goto xdiXY; Lh5ev: $MC61s = config('env.APP_KEY'); goto FRqgC; UQIcm: $NN5ns = $HoLMG->getTrimString('nonce'); goto LeGGG; k3JZU: $dVL9O = $HoLMG->getInteger('timestamp'); goto FWmid; FWmid: BizException::throwsIf('已超时效（操作时间显示为24小时内，timestamp=' . time() . '）', !($dVL9O <= time() && $dVL9O > time() - TimeUtil::PERIOD_DAY)); goto UQIcm; STBD3: } }

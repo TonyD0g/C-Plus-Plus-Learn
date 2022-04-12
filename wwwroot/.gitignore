@@ -1,0 +1,12 @@
+node_modules
+Homestead.yaml
+Homestead.json
+.env
+/.idea/
+/composer.lock
+.project
+/public/uploads/
+.DS_Store
+bootstrap/config.php
+storage/install.lock
+

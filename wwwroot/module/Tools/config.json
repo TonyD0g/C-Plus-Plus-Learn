@@ -1,0 +1,11 @@
+{
+  "name": "Tools",
+  "title": "IT工具箱",
+  "require": [
+    "Vendor:>=1.4.0"
+  ],
+  "version": "1.4.0",
+  "modstartVersion": ">=1.4.0",
+  "author": "ModStart",
+  "description": "提供常用的工具"
+}

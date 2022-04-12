@@ -1,0 +1,7 @@
+<?php
+/**
+ * ------------------------ 
+ *  版权所有  www.tecmz.com
+ *  商业版本请购买正版授权使用
+ * ------------------------
+*/ namespace Module\Member\Web\Controller; use ModStart\App\Web\Layout\WebPage; use ModStart\Core\Input\Request; use ModStart\Field\AbstractField; use ModStart\Field\AutoRenderedFieldValue; use ModStart\Grid\Grid; use ModStart\Grid\GridFilter; use ModStart\Repository\Filter\RepositoryFilter; use Module\Member\Auth\MemberUser; use Module\Member\Support\MemberLoginCheck; class MemberMoneyController extends MemberFrameController implements MemberLoginCheck { private $api; public function __construct() { parent::__construct(); $this->api = app(\Module\Member\Api\Controller\MemberMoneyController::class); } public function index(WebPage $ZcuyS) { goto KCtQt; uIK11: $fK3QO->useSimple(function (AbstractField $sfBE1, $KdsT8, $D01Cg) { return AutoRenderedFieldValue::makeView('module::Member.View.pc.memberMoney.item', array('item' => $KdsT8)); }); goto rVT71; KCtQt: $fK3QO = Grid::make('member_money_log'); goto vB8me; QqbpI: return $ZcuyS->pageTitle('钱包')->view($vvDaY)->body($fK3QO); goto vwSc4; vB8me: $fK3QO->repositoryFilter(function (RepositoryFilter $P2EU9) { $P2EU9->where(array('memberUserId' => MemberUser::id())); }); goto RNpio; Pz8T2: list($vvDaY, $nRAaS) = $this->viewPaths('memberMoney.index'); goto QqbpI; RNpio: $fK3QO->disableCUD()->disableItemOperate(); goto uIK11; rVT71: if (Request::isPost()) { return $fK3QO->request(); } goto Pz8T2; vwSc4: } }
