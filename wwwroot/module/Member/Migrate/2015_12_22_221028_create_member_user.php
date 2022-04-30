@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ use Illuminate\Database\Schema\Blueprint; use Illuminate\Database\Migrations\Migration; class CreateMemberUser extends Migration { public function up() { Schema::create('member_user', function (Blueprint $qNtCk) { $qNtCk->increments('id'); $qNtCk->timestamps(); $qNtCk->string('username', 50)->nullable()->comment('用户名'); $qNtCk->string('phone', 20)->nullable()->comment('手机'); $qNtCk->string('email', 200)->nullable()->comment('邮箱'); $qNtCk->char('password', 32)->nullable()->comment('密码'); $qNtCk->char('passwordSalt', 16)->nullable()->comment('密码Salt'); $qNtCk->timestamp('lastLoginTime')->nullable()->comment('上次登录时间'); $qNtCk->string('lastLoginIp', 20)->nullable()->comment('上次登录Ip'); $qNtCk->boolean('phoneVerified')->nullable()->comment('手机已验证'); $qNtCk->boolean('emailVerified')->nullable()->comment('邮箱已验证'); $qNtCk->string('avatar', 100)->nullable()->comment('头像(小)'); $qNtCk->string('avatarMedium', 100)->nullable()->comment('头像(中)'); $qNtCk->string('avatarBig', 100)->nullable()->comment('头像(大)'); $qNtCk->tinyInteger('gender')->nullable()->comment('性别'); $qNtCk->string('realname', 20)->nullable()->comment('真实姓名'); $qNtCk->string('signature', 200)->nullable()->comment('个性签名'); $qNtCk->index('username'); $qNtCk->index('phone'); $qNtCk->index('email'); }); } public function down() { } }

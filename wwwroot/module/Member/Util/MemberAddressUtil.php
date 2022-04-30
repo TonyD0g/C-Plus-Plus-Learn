@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Util; use ModStart\Core\Dao\ModelUtil; class MemberAddressUtil { public static function getUserAddress($H7GUl, $DRfwW) { return ModelUtil::get('member_address', array('id' => $DRfwW, 'memberUserId' => $H7GUl)); } public static function listUserAddresses($H7GUl) { return ModelUtil::model('member_address')->where(array('memberUserId' => $H7GUl))->orderBy('id', 'desc')->orderBy('isDefault', 'desc')->get()->toArray(); } public static function delete($DRfwW) { ModelUtil::delete('member_address', array('id' => $DRfwW)); } public static function update($DRfwW, $hRWBB) { return ModelUtil::update('member_address', array('id' => $DRfwW), $hRWBB); } public static function insert($hRWBB) { return ModelUtil::insert('member_address', $hRWBB); } public static function getDefault($H7GUl) { goto ihiXV; kLj1X: return $ePfIh; goto sp0GE; ihiXV: $ePfIh = ModelUtil::get('member_address', array('memberUserId' => $H7GUl, 'isDefault' => true)); goto lZrMl; lZrMl: if (empty($ePfIh)) { $ePfIh = ModelUtil::get('member_address', array('memberUserId' => $H7GUl)); } goto kLj1X; sp0GE: } public static function clearDefault($H7GUl) { ModelUtil::update('member_address', array('memberUserId' => $H7GUl), array('isDefault' => false)); } public static function truncate($H7GUl) { ModelUtil::delete('member_address', array('memberUserId' => $H7GUl)); } }

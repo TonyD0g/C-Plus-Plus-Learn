@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Vendor\Provider\VideoStream; use ModStart\Field\AbstractField; use ModStart\Support\Manager\FieldManager; class VideoStreamField extends AbstractField { const SCOPE_ADMIN = 'admin'; const SCOPE_MEMBER = 'member'; protected $view = 'module::Vendor.View.field.videoStream'; protected $value = array('driver' => null, 'name' => null, 'path' => null); protected function setup() { parent::setup(); $this->addVariables(array('scope' => self::SCOPE_ADMIN)); } public function scope($qYl2p = null) { goto DpdlT; DpdlT: if (null == $qYl2p) { return $this->getVariable('scope'); } goto HuZXa; UFXVf: return $this; goto v_b4H; HuZXa: $this->addVariables(array('scope' => $qYl2p)); goto UFXVf; v_b4H: } public function unserializeValue($Xiug2, AbstractField $sfBE1) { goto k5rAW; D1GEn: if (empty($Xiug2['name'])) { $Xiug2['name'] = null; } goto s26j2; g6E1L: return $Xiug2; goto Vnb_k; AIN0d: if (empty($Xiug2['driver'])) { $Xiug2['driver'] = null; } goto D1GEn; s26j2: if (empty($Xiug2['path'])) { $Xiug2['path'] = null; } goto g6E1L; k5rAW: $Xiug2 = json_decode($Xiug2, true); goto AIN0d; Vnb_k: } public function serializeValue($Xiug2, $lB7_g) { return json_encode($Xiug2, JSON_UNESCAPED_UNICODE); } public function prepareInput($Xiug2, $lB7_g) { return json_decode($Xiug2, true); } public static function register() { FieldManager::extend('videoStream', VideoStreamField::class); } }

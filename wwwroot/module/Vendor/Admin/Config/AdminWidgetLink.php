@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Vendor\Admin\Config; class AdminWidgetLink { private static $list = array(); public static function register($jyQwv) { self::$list[] = $jyQwv; } public static function get() { goto y3iL6; zSjSK: foreach ($nChni as $Zc0iK => $aEiYS) { if (isset($n9C5w[$aEiYS['title']])) { $n9C5w[$aEiYS['title']]['list'] = array_merge($n9C5w[$aEiYS['title']]['list'], $aEiYS['list']); } else { $n9C5w[$aEiYS['title']] = $aEiYS; } } goto JUSed; kjshO: $n9C5w = array(); goto zSjSK; S4PQj: foreach (self::$list as $KdsT8) { if ($KdsT8 instanceof \Closure) { $FKDin = call_user_func($KdsT8); if (!empty($FKDin)) { if (isset($FKDin['title']) && isset($FKDin['list'])) { $nChni[] = $FKDin; } else { $nChni = array_merge($nChni, $FKDin); } } } else { $nChni[] = $KdsT8; } } goto kjshO; JUSed: return array_values($n9C5w); goto h5__W; y3iL6: $nChni = array(); goto S4PQj; h5__W: } public static function build($Kbszs, $Ra67r) { if (empty($Ra67r)) { return null; } return array('title' => $Kbszs, 'list' => array_filter(array_map(function ($KdsT8) { return $KdsT8 ? array('title' => $KdsT8[0], 'link' => $KdsT8[1]) : null; }, $Ra67r))); } }

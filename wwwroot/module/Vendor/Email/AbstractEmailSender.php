@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Vendor\Email; use Illuminate\Support\Facades\View; use ModStart\Core\Exception\BizException; use ModStart\Core\Input\Response; abstract class AbstractEmailSender { protected abstract function sendExecute($plRSP, $kj_IW, $CTO0l, $HvAUu, $HAqS9 = array()); public function send($plRSP, $CTO0l, $RJldp, $hoD52 = array(), $kj_IW = null, $HAqS9 = array(), $VLCiR = null) { goto wRmw1; I10Q8: if (!view()->exists($vvDaY)) { $vvDaY = 'theme.' . modstart_config()->getWithEnv('siteTemplate', 'default') . '.mail.' . $RJldp; if (!view()->exists($vvDaY)) { $vvDaY = 'theme.default.mail.' . $RJldp; if (!view()->exists($vvDaY)) { if ($VLCiR) { $vvDaY = 'module::' . $VLCiR . '.View.mail.' . $RJldp; } if (!view()->exists($vvDaY)) { $vvDaY = 'module::Vendor.View.mail.' . $RJldp; } } } } goto ocTZ0; NS02b: $HvAUu = View::make($vvDaY, $hoD52)->render(); goto xZorT; wRmw1: $vvDaY = $RJldp; goto I10Q8; xZorT: try { goto HQ4Kh; xS78y: return Response::generateSuccess(); goto W2I7p; tcjgm: BizException::throwsIfResponseError($mW7Vi); goto xS78y; HQ4Kh: $mW7Vi = $this->sendExecute($plRSP, $kj_IW, $CTO0l, $HvAUu, $HAqS9); goto tcjgm; W2I7p: } catch (BizException $Dnvff) { return Response::generateError($Dnvff->getMessage()); } goto lB1_R; ocTZ0: if (!view()->exists($vvDaY)) { throw new \Exception('mail view not found : ' . $vvDaY); } goto RCaVu; RCaVu: if (null === $kj_IW) { $kj_IW = $plRSP; } goto NS02b; lB1_R: } }

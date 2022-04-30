@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Util; use ModStart\Core\Dao\ModelUtil; class MemberCreditUtil { public static function paginateLog($H7GUl, $ZcuyS, $iy20Z, $HxhmW = array()) { $HxhmW['where']['memberUserId'] = $H7GUl; return ModelUtil::paginate('member_credit_log', $ZcuyS, $iy20Z, $HxhmW); } public static function getTotal($H7GUl) { goto RxNy1; fPjOD: if (empty($avQLM)) { return 0; } goto FDYWV; RxNy1: $avQLM = ModelUtil::get('member_credit', array('memberUserId' => $H7GUl)); goto fPjOD; FDYWV: return $avQLM['total']; goto JFAVz; JFAVz: } public static function change($H7GUl, $NublG, $gAM03) { goto KW3Zw; KW3Zw: if (!$NublG) { throw new \Exception('MemberCreditUtil -> change empty'); } goto wtsXr; n8dOh: if (empty($avQLM)) { $avQLM = ModelUtil::insert('member_credit', array('memberUserId' => $H7GUl, 'total' => 0)); } goto YWKWC; PT8E4: $avQLM = ModelUtil::update('member_credit', array('id' => $avQLM['id']), array('total' => $avQLM['total'] + $NublG)); goto QbZGn; wtsXr: $avQLM = ModelUtil::getWithLock('member_credit', array('memberUserId' => $H7GUl)); goto n8dOh; KGwUX: ModelUtil::insert('member_credit_log', array('memberUserId' => $H7GUl, 'change' => $NublG, 'remark' => $gAM03)); goto PT8E4; YWKWC: if ($NublG < 0 && $avQLM['total'] + $NublG < 0) { throw new \Exception('MemberCreditUtil -> total change to empty'); } goto KGwUX; QbZGn: if ($avQLM['total'] < 0) { throw new \Exception('MemberCreditUtil -> total empty'); } goto D7vMH; D7vMH: } }

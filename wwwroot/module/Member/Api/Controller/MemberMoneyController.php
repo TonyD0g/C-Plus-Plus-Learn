@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Api\Controller; use ModStart\Core\Input\InputPackage; use ModStart\Core\Input\Response; use ModStart\Module\ModuleBaseController; use Module\Member\Auth\MemberUser; use Module\Member\Support\MemberLoginCheck; use Module\Member\Util\MemberMoneyUtil; class MemberMoneyController extends ModuleBaseController implements MemberLoginCheck { public function get() { return Response::generateSuccessData(array('total' => MemberMoneyUtil::getTotal(MemberUser::id()))); } public function log() { goto kUNcN; M0ssN: $nKLrL = $V_bni->getTrimString('type'); goto Hp9pj; W9Cqx: $wN_YM = MemberMoneyUtil::paginateLog(MemberUser::id(), $HoLMG->getPage(), $HoLMG->getPageSize(), $HxhmW); goto VMzjL; Hp9pj: switch ($nKLrL) { case 'income': $HxhmW['whereOperate'] = array('change', '>', '0'); break; case 'payout': $HxhmW['whereOperate'] = array('change', '<', '0'); break; } goto W9Cqx; VMzjL: return Response::generateSuccessPaginate($HoLMG->getPage(), $HoLMG->getPageSize(), $wN_YM); goto Lom47; s3aFM: $V_bni = $HoLMG->getJsonAsInput('search'); goto M0ssN; kUNcN: $HoLMG = InputPackage::buildFromInput(); goto mZ6Oj; mZ6Oj: $HxhmW = array(); goto s3aFM; Lom47: } }

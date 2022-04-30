@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace App\Web\Controller; use Illuminate\Support\Facades\View; use ModStart\App\Web\Layout\WebConfigBuilder; use ModStart\Form\Form; use Module\Member\Auth\MemberUser; use Module\Member\Support\MemberLoginCheck; use Module\Member\Type\Gender; class MemberProfileController extends BaseController implements MemberLoginCheck { private $api; private $viewMemberFrame; public function __construct() { goto o1f2X; w4jOw: View::share('_viewMemberFrame', $this->viewMemberFrame); goto oWfZZ; oWfZZ: $this->api = app(\App\Api\Controller\MemberProfileController::class); goto B_mOZ; o1f2X: list($this->viewMemberFrame, $uJLGM) = $this->viewPaths('member.frame'); goto w4jOw; B_mOZ: } public function index(WebConfigBuilder $uZz0J) { goto EN5EX; zeA6d: return $uZz0J->perform(MemberUser::user(), function (Form $Tqf2v) { return $this->api->basic($Tqf2v->dataForming()); }); goto Mn3gq; EN5EX: $uZz0J->pageTitle('基本资料'); goto MgExW; eKmQG: $uZz0J->text('realname', '姓名'); goto zeA6d; zm0Ex: $uZz0J->radio('gender', '性别')->optionType(Gender::class); goto eKmQG; MgExW: $uZz0J->page()->view($this->viewMemberFrame); goto I1avi; I1avi: $uZz0J->text('username', '用户名')->readonly(true); goto zm0Ex; Mn3gq: } }

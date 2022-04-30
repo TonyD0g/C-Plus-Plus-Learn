@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Listener; use ModStart\Core\Dao\ModelUtil; use Module\Member\Constant\PayConstant; use Module\Member\Util\MemberUtil; use Module\Member\Util\MemberVipUtil; use Module\PayCenter\Events\OrderPayedEvent; use Module\Vendor\Type\OrderStatus; class MemberVipPayListener { public function onOrderPayed(OrderPayedEvent $PkbBv) { goto YTmAc; aV2Xi: switch ($HLJws) { case PayConstant::MEMBER_VIP: goto lsm55; zdO_9: MemberUtil::update($jOay4['memberUserId'], $ZagfX); goto n1FYa; lsm55: $jOay4 = ModelUtil::get('member_vip_order', $IVZu6); goto R2ZEX; R2ZEX: if (empty($jOay4)) { return; } goto g2upA; ULDez: $Ui2lF = MemberVipUtil::get($jOay4['vipId']); goto o7Coj; n1FYa: break; goto H6iFF; o7Coj: ModelUtil::update('member_vip_order', array('id' => $IVZu6), array('status' => OrderStatus::COMPLETED)); goto hEJ7l; pG68V: $ZagfX['vipExpire'] = $jOay4['expire']; goto zdO_9; g2upA: $qe8fj = MemberUtil::get($jOay4['memberUserId']); goto ULDez; fOxfj: $ZagfX['vipId'] = $jOay4['vipId']; goto pG68V; hEJ7l: $ZagfX = array(); goto fOxfj; H6iFF: } goto D_i2j; YTmAc: $HLJws = $PkbBv->biz; goto yeLAc; yeLAc: $IVZu6 = $PkbBv->bizId; goto aV2Xi; D_i2j: } public function subscribe($PNkBK) { $PNkBK->listen(OrderPayedEvent::class, '\\Module\\Member\\Listener\\MemberVipPayListener@onOrderPayed'); } }

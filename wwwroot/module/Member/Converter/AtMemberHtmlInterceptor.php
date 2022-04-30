@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Converter; use ModStart\Core\Dao\ModelUtil; use Module\Vendor\Html\HtmlConverterInterceptor; class AtMemberHtmlInterceptor implements HtmlConverterInterceptor { public function convert($yQ7gX) { goto VKui6; VtVuh: if (empty($pov6U[1])) { return $yQ7gX; } goto CUPds; VKui6: preg_match_all('/@(.*?):/', $yQ7gX, $pov6U); goto VtVuh; CUPds: $WT1oi = array(); goto kswgC; ILkik: if (empty($RIkMY)) { return $yQ7gX; } goto D5A89; Sg2xB: $RIkMY = ModelUtil::model('member_user')->whereIn('username', array_values($WT1oi))->get()->toArray(); goto ILkik; wSQTU: return $yQ7gX; goto ckjgZ; kswgC: foreach ($pov6U[1] as $D01Cg => $xiqX1) { goto q7Y0D; ZODH6: if (empty($xiqX1)) { continue; } goto pWyIE; pWyIE: $WT1oi[$pov6U[0][$D01Cg]] = $xiqX1; goto bN7Ve; q7Y0D: $xiqX1 = trim($xiqX1); goto ZODH6; bN7Ve: } goto UvlrF; D5A89: $xnh8V = array(); goto dvfeJ; YqM5U: foreach ($WT1oi as $UwMnM => $xiqX1) { goto Tztk7; jia20: $yQ7gX = str_replace($UwMnM, '<a href="' . $C4a7h . '" target="_blank">@' . $xnh8V[$xiqX1]['username'] . '</a>: ', $yQ7gX); goto iNXCK; LCKNo: $C4a7h = str_replace('{id}', $xnh8V[$xiqX1]['id'], '/member/{id}'); goto jia20; Tztk7: if (empty($xnh8V[$xiqX1])) { continue; } goto LCKNo; iNXCK: } goto wSQTU; dvfeJ: foreach ($RIkMY as $qe8fj) { $xnh8V[$qe8fj['username']] = $qe8fj; } goto YqM5U; UvlrF: if (empty($WT1oi)) { return $yQ7gX; } goto Sg2xB; ckjgZ: } }

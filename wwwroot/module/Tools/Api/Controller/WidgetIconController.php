@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Tools\Api\Controller; use Illuminate\Routing\Controller; use ModStart\Core\Input\Response; class WidgetIconController extends Controller { public function index() { goto H4quW; WTtEq: if (file_exists($JJGcw = public_path('asset/font-awesome/css/font-awesome.min.css')) && ($HvAUu = file_get_contents($JJGcw))) { preg_match_all('/\\.fa-([a-z0-9\\-]+):before/', $HvAUu, $pov6U); $wiK2p = array_map(function ($IIIcx) { return array('title' => $IIIcx, 'cls' => "fa fa-{$IIIcx}"); }, $pov6U[1]); } goto Q1TCP; ZnzID: $wiK2p = array(); goto WTtEq; Q1TCP: $FIOnf[] = array('title' => 'Font Awesome', 'list' => $wiK2p); goto r0cmg; q6JwH: if (file_exists($JJGcw = public_path('asset/vendor/iconfont/iconfont.css')) && ($HvAUu = file_get_contents($JJGcw))) { preg_match_all('/\\.icon-([a-z0-9\\-]+):before/', $HvAUu, $pov6U); $wiK2p = array_map(function ($IIIcx) { return array('title' => $IIIcx, 'cls' => "iconfont icon-{$IIIcx}"); }, $pov6U[1]); } goto FIJ1u; FIJ1u: $FIOnf[] = array('title' => '内置图标', 'list' => $wiK2p); goto ZnzID; H4quW: $FIOnf = array(); goto f0zVt; r0cmg: return Response::jsonSuccessData($FIOnf); goto mXnY1; f0zVt: $wiK2p = array(); goto q6JwH; mXnY1: } }

@@ -1,7 +1,0 @@
-<?php
-/**
- * ------------------------ 
- *  版权所有  www.tecmz.com
- *  商业版本请购买正版授权使用
- * ------------------------
-*/ namespace Module\Member\Config; use ModStart\Core\Exception\BizException; use Module\Member\Oauth\AbstractOauth; class MemberOauth { private static $list = array(); public static function register($KdsT8) { self::$list[] = $KdsT8; } public static function hasItems() { goto PhapN; N5FLY: $Wjl82 = array_filter($Wjl82, function ($KdsT8) { return $KdsT8->hasRender(); }); goto JTimR; PhapN: $Wjl82 = self::get(); goto N5FLY; JTimR: return !empty($Wjl82); goto nzcPR; nzcPR: } public static function get($Ut_Gf = null) { goto oS9LV; C0Q2p: if (null === $Ut_Gf) { return $wiK2p; } goto H31E9; GxuCj: if (null === $wiK2p) { $wiK2p = array(); foreach (self::$list as $KdsT8) { if ($KdsT8 instanceof \Closure) { $KdsT8 = call_user_func($KdsT8); } $wiK2p = array_merge($wiK2p, $KdsT8); } } goto C0Q2p; oS9LV: static $wiK2p = null; goto GxuCj; T_Gc1: return null; goto pBbq4; H31E9: foreach ($wiK2p as $KdsT8) { if ($KdsT8->name() == $Ut_Gf) { return $KdsT8; } } goto T_Gc1; pBbq4: } public static function getOrFail($Ut_Gf) { goto AYgeR; Hn3Ir: return $Cdaf0; goto OaWzg; AYgeR: $Cdaf0 = self::get($Ut_Gf); goto NYio7; NYio7: BizException::throwsIfEmpty('授权登录信息(' . $Ut_Gf . ')未找到', $Cdaf0); goto Hn3Ir; OaWzg: } private static function sort() { static $PcBmw = 1000; return $PcBmw++; } }
